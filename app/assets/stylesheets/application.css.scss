@@ -13,3 +13,32 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+
+.nav_link {
+	font-color : blue;
+}
+
+.header {
+	height : 70px;
+	float : left;
+	z-index: 1;
+	position: fixed;
+}
+
+.navigation-bar {
+	z-index: 100;
+  	position: fixed;
+}
+
+body {
+	background-color: #d5d9e0;
+}
+
+.mdl-layout__header {
+	background-color: white !important;	
+}

@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  post 'wishes/create'
+
+  put 'wishes/update'
+
+  get 'wishes/show'
+
+  delete 'wishes/delete'
+
+  get 'wishes/index'
+
+  get 'photos/index'
+
 	get 'welcome/index'
 	root 'welcome#index'
 

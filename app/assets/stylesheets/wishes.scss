@@ -1,0 +1,29 @@
+// Place all the styles related to the wishes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.wishes-header {
+	height:60px ;
+	width: 70%;
+	background-color:white;
+	z-index : 1;
+	border-radius: 2px;
+	margin-left: 200px;
+
+}
+
+.float {
+	float :left;
+}
+
+.wishes-container {
+	height: 400px;
+	width : 70%;
+	background-color:white;
+	z-index : 1;
+	border-radius: 2px;
+	margin-left: 200px;
+	margin-top: 10px;
+	
+}

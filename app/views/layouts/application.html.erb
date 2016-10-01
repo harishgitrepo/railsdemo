@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Railsdemo</title>
+    <title>Wedding Ceremony</title>
     <%= csrf_meta_tags %>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
- <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-blue.min.css" /> 
-<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-blue.min.css" /> 
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Tangerine">
+
+
   </head>
 
   <body>
+    <div class="header">
+      <header class="navigation-bar  mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <%= link_to "Wedding Ceremony", { :controller => :welcome, :action => :index }, :method => :get, :class => "mdl-layout-title navbar-header" %>
+          <div class="mdl-layout-spacer"></div>
+            <nav class="mdl-navigation">
+              <%= link_to "Photos", { :controller => :photos, :action => :index }, :method => :get, :class => "nav_link" %>
+              <%= link_to "Wishes", { :controller => :wishes, :action => :index }, :method => :get, :class => "nav_link" %>
+              
+            </nav>
+          </div>
+      </header>
+    </div>    
     <%= yield %>
   </body>
 </html>
