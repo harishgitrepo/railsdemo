@@ -11,7 +11,7 @@ body {
 .demo-card-event.mdl-card {
   width: 400px;
   height: 256px;
-  background: #3E4EB8;
+  background: white;
 }
 .demo-card-event > .mdl-card__actions {
   border-color: rgba(255, 255, 255, 0.2);
@@ -44,12 +44,13 @@ body {
 
 		 .title_text {
 			 margin-top: 100px;
+       margin-left : 100px;
 		 }
 
 
      .mdl-card.clock-space {
-      height : 200px;
-      width: 700px;
+      height : 230px;
+      width: 730px;
       background-color: white;
      }
 
@@ -59,15 +60,31 @@ body {
 
 
 .quote-content {
+  margin-top:250px;
   width : 700px;
-  height : 700px;
+  height : 250px;
 }
 .first-page {
   width : 1280px;
   height : 700px;
   background-image: url("featured.jpeg");
   background-size: 1280px 700px;
+  color: white;
 }
 .tangerine {
-  
+  font-family: Tangerine, serif;
+}
+
+.pacifico {
+  font-family: Pacifico, serif;
+}
+
+.wedding-date {
+  margin-left : 230px;
+}
+
+.first-page {
+  width : 1280px;
+  height : 700px;
+  background-color : black;
 }

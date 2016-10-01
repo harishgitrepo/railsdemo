@@ -9,8 +9,24 @@ function initMap() {
   var mapDiv = document.getElementById('map');
   var map = new google.maps.Map(mapDiv, {
       center: {lat: 12.5316439, lng: 78.2069398},
-      zoom: 8
+      zoom: 13
   });
+  var marker = new google.maps.Marker({
+    map: map,
+    animation: google.maps.Animation.DROP,
+    position: {lat: 12.5316439, lng: 78.2069398},
+    label: "SVV Kalyana Mandabam"
+  });
+  marker.addListener('click', toggleBounce);
+}
+
+
+function toggleBounce() {
+  if (marker.getAnimation() !== null) {
+    marker.setAnimation(null);
+  } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
 }
 
 $(document).ready(function() {
