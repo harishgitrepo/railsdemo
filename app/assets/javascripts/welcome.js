@@ -1,7 +1,6 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-
 function dayDiff(first, second) {
           return (second-first)/(1000*60*60*24);
 }
@@ -29,7 +28,9 @@ function toggleBounce() {
   }
 }
 
-$(document).ready(function() {
+
+$(document).on('turbolinks:load',function() {
+	
 	  var clock;
       var currentDate = new Date();
       var marriageDate = new Date(2017,1,6,9);
@@ -62,4 +63,8 @@ $(document).ready(function() {
 		clock.start();
 		clock.setOptions('onclick',null);
 		$('.clock').prop('onclick',null).off('click');
+
+
+
+
 });

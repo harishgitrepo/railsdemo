@@ -10,7 +10,7 @@
 	z-index : 1;
 	border-radius: 2px;
 	margin-left: 200px;
-
+	margin-top : 70px;
 }
 
 .float {
@@ -20,10 +20,29 @@
 .wishes-container {
 	height: 400px;
 	width : 70%;
-	background-color:white;
+	background-color:transparent;
 	z-index : 1;
 	border-radius: 2px;
 	margin-left: 200px;
 	margin-top: 10px;
+	border-style: solid;
+	border-color : white;
 	
+}
+
+#post_button {
+	position:absolute;
+    top: 18.8%;
+    left: 83.4%;
+}
+
+.roboto {
+  font-family: Roboto, serif;
+}
+
+
+.spinner-object {
+	top : 70%;
+	left : 50%;
+	position : relative;
 }

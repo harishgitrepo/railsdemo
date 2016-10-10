@@ -1,28 +1,157 @@
-<div class="mdl-layout mdl-js-layout ">
-<div style="margin-top: 100px">
 
+<div class="wishes-header">
+<nav class="searchbox z-depth-3">
+    <div class="nav-wrapper ">
+      <form>
+        <div class="input-field">
+          <input id="search" type="search" required>
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+    </div>
+  </nav>
+				<button id="post_button" class="btn-floating btn-large waves-effect waves-light blue tooltipped btn modal-trigger" data-position ="bottom" data-delay=50 data-tooltip="Add New" data-target="modal1">
+  <i class="material-icons">add</i>
+</button>
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer" style="z-index: 1003; display: none; opacity: 0; transform: scaleX(0.7); top: 250.516px;">
 
-<div class="wishes-header center">
-				<div>
-				<p class="float">Post your Wishes Here</p>
-					<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-						<label class="mdl-button mdl-js-button mdl-button--icon" for="site-search">
-								<i class="material-icons">search</i>
-							</label>
-							<div class="mdl-textfield__expandable-holder">
-								<input class="mdl-textfield__input" type="search" id="site-search" />
-								<label class="mdl-textfield__label" for="site-search">Search</label>
-							</div>
-						</div>
-				</div>
+<form id="formValidate" class="col s12">
+
+    <div class="modal-content">
+    <h3 class="roboto">New Wish !!!</h3>
+      <div class="row">
+    
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="first_name" type="text" class="validate">
+          <label for="first_name" data-error="Please write your name">Name</label>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea1" class=""></textarea>
+          
+        </div>
+      </div>
+      <div class="file-field input-field">
+      <div class="btn">
+        <span>Photo</span>
+        <input id ="inputfile" type="file" accept="image/x-png, image/gif, image/jpeg">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
+    
+  </div>
+    </div>
+    <div class="modal-footer">
+    	<button id="uploadbutton" onclick="uploadFile()" class="btn waves-effect waves-light">Upload</button>
+      	<a href="#" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
+    </div>
+  </div>
+</form>
 </div>
 
 
-<div class="wishes-container">
 
+<div class="container">
+<!--
+<div class="row">
+      <div class="col s4">
+      		<div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+      <p><a href="#">This is a link</a></p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+    </div>
+  </div>
+      </div>
+      <div class="col s4">
+      	<div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+      <p><a href="#">This is a link</a></p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+    </div>
+  </div>
+      </div>
+
+      <div class="col s4">
+      	<div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+      <p><a href="#">This is a link</a></p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+    </div>
+  </div>
+
+      </div>
+-->      
 </div>
 
 
+<div class="spinner-object preloader-wrapper big active" style="right: 50%; top:50%; position: fixed;">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
 
-</div>
-</div>
+      <div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+
+

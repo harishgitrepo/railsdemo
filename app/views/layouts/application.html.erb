@@ -2,32 +2,39 @@
 <html>
   <head>
     <title>Wedding Ceremony</title>
+    <meta name="turbolinks-cache-control" content="no-cache">
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-blue.min.css" /> 
-    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Tangerine">
-
+    
 
   </head>
 
   <body>
-    <div class="header">
-      <header class="navigation-bar  mdl-layout__header">
-        <div class="mdl-layout__header-row">
-          <%= link_to "Home", { :controller => :welcome, :action => :index }, :method => :get, :class => "mdl-layout-title navbar-header" %>
+
+    <div id="#" class="header">
+      
+          <%= link_to welcome_path, :id => "home", :class => "home_button btn-floating btn-large waves-effect waves-light blue tooltipped", "data-position" =>  "bottom", "data-delay" => 50, "data-tooltip" => "Home" do %>
+            <i class="material-icons">
+home</i>  
+          <% end %>
           <div class="mdl-layout-spacer"></div>
-            <nav class="mdl-navigation">
-              <%= link_to "Photos", { :controller => :photos, :action => :index }, :method => :get, :class => "nav_link" %>
-              <%= link_to "Wishes", { :controller => :wishes, :action => :index }, :method => :get, :class => "nav_link" %>
-              
-            </nav>
-          </div>
-      </header>
+              <%= link_to photos_path, :id => "photo", :class => "photo_button btn-floating btn-large waves-effect waves-light blue tooltipped", "data-position" =>  "bottom", "data-delay" => 50, "data-tooltip" => "Photos" do %>
+            <i class="material-icons">
+photo</i>  
+          <% end %>
+          <%= link_to wishes_path, :id => "wishes", :class => "wishes_button btn-floating btn-large waves-effect waves-light blue tooltipped", "data-position" =>  "bottom", "data-delay" => 50, "data-tooltip" => "Wishes" do %>
+            <i class="material-icons">
+comment</i>  
+          <% end %>
+
+
+
     </div>    
     <%= yield %>
   </body>

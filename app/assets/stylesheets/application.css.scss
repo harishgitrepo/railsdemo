@@ -14,8 +14,12 @@
  *= require_self
  */
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
+
+@import "materialize/components/color";
+$primary-color: color("blue", "lighten-2") !default;
+@import "materialize";
+
+@import 'rails_emoji_picker';
 
 
 
@@ -25,20 +29,40 @@
 
 .header {
 	height : 70px;
-	float : left;
+	width : 100%;
 	z-index: 1;
 	position: fixed;
+	float: left;
+	top: 0px;
 }
 
-.navigation-bar {
-	z-index: 100;
-  	position: fixed;
-}
 
 body {
-	background-color: #d5d9e0;
+	background-color: #fcfdff;
 }
 
 .mdl-layout__header {
 	background-color: white !important;	
+}
+
+.home_button {
+	float : left;
+	position:absolute;
+    top: 2%;
+    left: 5%;
+}
+
+.photo_button {
+	float : left;
+	position:absolute;
+    top: 2%;
+    left: 75%;
+}
+
+
+.wishes_button {
+	position:absolute;
+	float : left;
+    top: 2%;
+    left: 80%;
 }

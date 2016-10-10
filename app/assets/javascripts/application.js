@@ -12,7 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
-//= require skrollr
+//= require materialize-sprockets
+//= require rails_emoji_picker
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load',function(){
+	$('.tooltipped').tooltip({delay: 50});
+});
