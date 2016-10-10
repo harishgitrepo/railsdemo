@@ -139,11 +139,12 @@ function uploadFile() {
 				reader.readAsArrayBuffer(file);
 
 				reader.onload = function(){
-
+					setTimeout(function(){},1000);
       				var arrayBuffer = reader.result;
       				var bytes = new Uint8Array(arrayBuffer);
       				var options = "{\"path\":\"/" +  file.name   + "\"}"
 						var token = "TgXgp6atY-AAAAAAAAAAB6mr2OM72pPKJk-dyRIPvv7_PPRsM_NyuTrplRJhsPJM";
+						setTimeout(function(){},1000);
 						$.ajax({
 			    			url: 'https://content.dropboxapi.com/2/files/upload',
 			    			//Ajax events
@@ -159,6 +160,7 @@ function uploadFile() {
 			       				"link" : uploadedfilepath
 			       			};
 			       			var hostname = window.location.host;
+			       			setTimeout(function(){},1000);
 			       			$.ajax({
 			    				url: 'http://' + hostname +'/wishes/create',
 			    				//Ajax events
@@ -213,6 +215,7 @@ function uploadFile() {
 		       	"message" : content
 			};
 			var hostname = window.location.host;
+			setTimeout(function(){},1000);
 			$.ajax({
 				url: 'http://' + hostname +'/wishes/create',
 				//Ajax events
