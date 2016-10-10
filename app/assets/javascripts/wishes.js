@@ -6,7 +6,7 @@
 $(document).on('turbolinks:load',function(){
 
 	$('.modal-trigger').leanModal({
-		dismissible: false
+		dismissible: true
 	});
 	$("#textarea1").emojioneArea();
 
@@ -118,14 +118,11 @@ function uploadFile() {
 	var content = el[0].emojioneArea.getText();
 	if ($('#first_name').val() == "") {
 		  Materialize.toast('Name is Mandatory', 1000) // 4000 is the duration of the toast
-		  
-		  
+		  return false;
 	}
 	else if ( content == "" ) {	
 		Materialize.toast('Content is Mandatory', 1000) // 4000 is the duration of the toast
-		
-		
-
+		return false;
 	} else {
 		if ($('#inputfile')[0].files.length > 0) {
 			if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
@@ -241,7 +238,7 @@ function uploadFile() {
 			});
 		}	
 	}
-	
+	return false;
 }
 
 function requestForImage(image_link) {
