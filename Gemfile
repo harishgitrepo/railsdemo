@@ -33,8 +33,6 @@ gem 'jbuilder', '~> 2.5'
 # Adding emoji-picker
 gem 'rails_emoji_picker'
 
-
-
 gem 'materialize-sass'
 
 

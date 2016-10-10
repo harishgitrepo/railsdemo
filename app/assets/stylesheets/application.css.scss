@@ -30,7 +30,7 @@ $primary-color: color("blue", "lighten-2") !default;
 .header {
 	height : 70px;
 	width : 100%;
-	z-index: 1;
+	z-index: 1001;
 	position: fixed;
 	float: left;
 	top: 0px;
@@ -50,19 +50,21 @@ body {
 	position:absolute;
     top: 2%;
     left: 5%;
+    
 }
 
 .photo_button {
 	float : left;
 	position:absolute;
     top: 2%;
-    left: 75%;
-}
+    left: 90%;
+    
+}	
 
 
 .wishes_button {
 	position:absolute;
 	float : left;
     top: 2%;
-    left: 80%;
+    left: 95%;
 }

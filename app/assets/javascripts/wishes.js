@@ -11,25 +11,37 @@ $(document).on('turbolinks:load',function(){
 	$("#textarea1").emojioneArea();
 
 	if (window.location.pathname.includes("wishes/index")) {
-		loadWishContainer(1);	
+		loadWishContainer(1,false,"");	
 	}
 	
+
+	$('#search').on('input',function(){
+		reloadWishes(1,true,$(this).val());
+	});
 });
 
 
-function loadWishContainer(page) {
+function loadWishContainer(page,isquery,queryparam) {
   		
    			 // do stuff
    			var host = window.location.host;
+   			var pagetohit = "";
+   			if(isquery) {
+   				pagetohit = "/wishes/query?page=" + page + "&query=" + queryparam + "&format=json"
+   			} else {
+   				pagetohit = '/wishes/list?page=' + page + '&format=json'
+   			}
+   			var urltohit = 'http://' + host + pagetohit;
    			$.ajax({
-   				url: 'http://' + host + '/wishes/list?page=' + page + '&format=json',
+   				url: urltohit,
    				success: function (e) {
-   					var result = getCardsHtml(e["wishes"]);
-   					result += getPaginationHtml(e["totalpages"],e["currentpage"]);
+   					var result = getCardsHtml(e["wishes"],isquery);
+   					result += getPaginationHtml(e["totalpages"],e["currentpage"],isquery,queryparam);
    					$('.spinner-object').hide();
-   					$('.container').empty();
-   					$('.container').append(result);
-   					$('.container').show();
+   					var wishescontainer = $('.wishes-container');
+   					wishescontainer.empty();
+   					wishescontainer.append(result);
+   					wishescontainer.show();
    						
    				},
    				error: function (e) {
@@ -45,10 +57,14 @@ function loadWishContainer(page) {
  		
 	}
 
-function getCardsHtml(wishes) {
+function getCardsHtml(wishes,isquery) {
 	
 	if (wishes.length == 0) {
-		return "<h1> You are the first one to wish !! Click on Add Button.</h1>"
+		if (isquery) {
+			return "<h1>No Search Results !!</h1>"
+		} else {
+			return "<h1>You are the first one to wish !! Click on Add Button.</h1>"
+		}
 	}
 	var prepond = "";
 	var result = "<div class=\"row\">";
@@ -59,8 +75,10 @@ function getCardsHtml(wishes) {
 			wishlink = wishes[i]["link"];
 			requestForImage(wishlink);
 			wishlink = wishlink.slice(1,wishlink.length);
+			result += "<div class=\"col s4 \"><div class=\"card z-depth-3\"><div class=\"card-image waves-effect waves-block waves-light\"><img id=\"" + wishlink + "\"class=\"activator\" src=\"\" height=\"200\" width=\"200\"></div><div class=\"card-content\"><span class=\"card-title activator grey-text text-darken-4\">" + wishes[i].name +"</span></div><div class=\"card-reveal\"><span class=\"card-title grey-text text-darken-4\">" + wishes[i].name + "<i class=\"material-icons right\">close</i></span><p>" + wishes[i].message + "</p></div></div></div>";
+		} else {
+			result += "<div class=\"col s4 \"><div class=\"messagecard card z-depth-3\"><div class=\"card-content\"><span class=\"card-title\">" + wishes[i].name + "</span></br></br><p>" + wishes[i].message + "</p></div></div></div>";
 		}
-		result += "<div class=\"col s4\"><div class=\"card\"><div class=\"card-image waves-effect waves-block waves-light\"><img id=\"" + wishlink + "\"class=\"activator\" src=\"\"></div><div class=\"card-content\"><span class=\"card-title activator grey-text text-darken-4\">" + wishes[i].name +"<i class=\"material-icons right\">more_vert</i></span><p>" + wishes[i].message +"</p></div><div class=\"card-reveal\"><span class=\"card-title grey-text text-darken-4\">" + wishes[i].name + "<i class=\"material-icons right\">close</i></span><p>" + wishes[i].message + "</p></div></div></div>";
 		if (i == wishes.length-1) {
 			result += "</div>"
 			break;
@@ -75,40 +93,41 @@ function getCardsHtml(wishes) {
 	return result;
 }
 
-function getPaginationHtml(totalpages,currentpage) {
+function getPaginationHtml(totalpages,currentpage,isquery,queryparam) {
 	if (totalpages == 0) {
 		return "";
 	}
-	var result = "<ul class=\"pagination\">";
+	queryparam = "'" + queryparam + "'";
+	var result = "<div class=\"paginationdiv\" align=\"center\"><ul class=\"pagination\">";
 	if (currentpage == 1) {
 
 		result += "<li class=\"disabled\"><a href=\"javascript:void(0);\" ><i class=\"material-icons\">chevron_left</i></a></li>";
 	} else {
 		previouspage = parseInt(currentpage)-1 ;
-		result += "<li class=\"waves-effect\"><a href=\"javascript:void(0);\" onclick=\"reloadWishes(" + previouspage + ")\"><i class=\"material-icons\">chevron_left</i></a></li>";
+		result += "<li class=\"waves-effect\"><a href=\"javascript:void(0);\" onclick=\"reloadWishes(" + previouspage + "," + isquery + "," + queryparam + ")\"><i class=\"material-icons\">chevron_left</i></a></li>";
 	}
 	for (var i=0;i<totalpages;i++) {
 		if (i == currentpage-1) {
 			    result += "<li class=\"active\"><a href=\"javascript:void(0);\"> " + (i+1) + "</a></li>";
 			    continue;
 		}
-		result += "<li class=\"waves-effect\"><a href=\"javascript:void(0);\" onclick=\"reloadWishes(" + (i+1)  +")\"> " + (i+1) + "</a></li>";
+		result += "<li class=\"waves-effect\"><a href=\"javascript:void(0);\" onclick=\"reloadWishes(" + (i+1) + "," + isquery + "," + queryparam  +")\"> " + (i+1) + "</a></li>";
 	}
 	if (currentpage == totalpages) {
 		result += "<li class=\"disabled\"><a href=\"javascript:void(0);\" ><i class=\"material-icons\">chevron_right</i></a></li>";
 	} else {
 		nextpage = parseInt(currentpage) + 1;
-		result += "<li class=\"waves-effect\"><a href=\"javascript:void(0);\" onclick=\"reloadWishes(" + nextpage  + ")\"><i class=\"material-icons\">chevron_right</i></a></li>";
+		result += "<li class=\"waves-effect\"><a href=\"javascript:void(0);\" onclick=\"reloadWishes(" + nextpage + "," + isquery + "," + queryparam + ")\"><i class=\"material-icons\">chevron_right</i></a></li>";
 	}
-	result += "</ul>";
+	result += "</ul></div>";
 	return result;
 }
 
-function reloadWishes(page) {
-	
+function reloadWishes(page,isquery,queryparam) {
+
+	$('.wishes-container').hide();
 	$('.spinner-object').show();
-	$('.container').hide();
-	loadWishContainer(page);
+	loadWishContainer(page,isquery,queryparam);
 
 }
 
@@ -124,6 +143,8 @@ function uploadFile() {
 		Materialize.toast('Content is Mandatory', 1000) // 4000 is the duration of the toast
 		return false;
 	} else {
+		$('#uploadbutton').hide(1000);
+		$('.modal-footer').append("<div class=\"progress\"><div class=\"indeterminate\"></div></div>");
 		if ($('#inputfile')[0].files.length > 0) {
 			if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
   				Materialize.toast('The File APIs are not fully supported in this browser.',1000);
@@ -166,8 +187,10 @@ function uploadFile() {
 			       				},
 			       				success: function (e) {
 			       					//$(this).prop( "disabled", false );
-			       					
+			       					$('#uploadbutton').show(1000);
+									$('.progress').remove();
 			       					$('#modal1').closeModal();
+			       					reloadWishes(1,false,"");
 			       				},
 			       				error: function (e) {
 			         				alert('error ' + e.message);
@@ -220,8 +243,10 @@ function uploadFile() {
      				
    				},
    				success: function (e) {
+   					$('#uploadbutton').show(1000);
+					$('.progress').remove();
    					$('#modal1').closeModal();
-   					reloadWishes(1);
+   					reloadWishes(1,false,"");
    				},
    				error: function (e) {
      				alert('error ' + e.message);

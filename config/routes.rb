@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get 'wishes/index', :as => :wishes
 
+  get 'wishes/query'
+
   get 'photos/index', :as => :photos
 
 	get 'welcome/index', :as => :welcome

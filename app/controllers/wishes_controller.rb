@@ -40,7 +40,28 @@ class WishesController < ApplicationController
     end
   end
 
-
+  def query
+    params[:query] ||= ""
+    params[:page] ||= 1
+    totalcount = Wish.all.where("name like ? OR message like ?","%#{params[:query]}%","%#{params[:query]}%").count
+    @wishes = Wish.all.where("name like ? OR message like ?","%#{params[:query]}%","%#{params[:query]}%").paginate(:page => params[:page]).order('updated_at DESC')
+    pagecount = 1
+    if @wishes.length == 0
+      pagecount = 0
+    else
+      pagecount = totalcount <= Wish.per_page ? pagecount : pagecount + (totalcount / Wish.per_page)
+    end
+    output = {
+      :totalpages => pagecount,
+      :currentpage => params[:page],
+      :wishes => @wishes
+    }
+    respond_to do |format|
+      format.json {
+        render :json => output
+      }
+    end
+  end
   private
     def wishes_params
       params.require(:wish).permit(:name, :message, :link)
