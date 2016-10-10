@@ -10,18 +10,19 @@ $(document).on('turbolinks:load',function(){
 	});
 	$("#textarea1").emojioneArea();
 
-	loadWishContainer(1);
-
-
+	if (window.location.pathname.includes("wishes/index")) {
+		loadWishContainer(1);	
+	}
+	
 });
 
 
 function loadWishContainer(page) {
   		
    			 // do stuff
-   			
+   			var host = window.location.host;
    			$.ajax({
-   				url: 'http://localhost:3000/wishes/list?page=' + page + '&format=json',
+   				url: 'http://' + host + '/wishes/list?page=' + page + '&format=json',
    				success: function (e) {
    					var result = getCardsHtml(e["wishes"]);
    					result += getPaginationHtml(e["totalpages"],e["currentpage"]);
@@ -157,9 +158,9 @@ function uploadFile() {
 			       				"message" : content,
 			       				"link" : uploadedfilepath
 			       			};
-
+			       			var hostname = window.location.host;
 			       			$.ajax({
-			    				url: 'http://localhost:3000/wishes/create',
+			    				url: 'http://' + hostname +'/wishes/create',
 			    				//Ajax events
 			       				beforeSend: function (e) {
 			         				
@@ -211,8 +212,9 @@ function uploadFile() {
 		       	"name" : $('#first_name').val(),
 		       	"message" : content
 			};
+			var hostname = window.location.host;
 			$.ajax({
-				url: 'http://localhost:3000/wishes/create',
+				url: 'http://' + hostname +'/wishes/create',
 				//Ajax events
    				beforeSend: function (e) {
      				
