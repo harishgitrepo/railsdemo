@@ -75,9 +75,9 @@ function getCardsHtml(wishes,isquery) {
 			wishlink = wishes[i]["link"];
 			requestForImage(wishlink);
 			wishlink = wishlink.slice(1,wishlink.length);
-			result += "<div class=\"col s4 \"><div class=\"card z-depth-3\"><div class=\"card-image waves-effect waves-block waves-light\"><img id=\"" + wishlink + "\"class=\"activator\" src=\"\" height=\"200\" width=\"200\"></div><div class=\"card-content\"><span class=\"card-title activator grey-text text-darken-4\">" + wishes[i].name +"</span></div><div class=\"card-reveal\"><span class=\"card-title grey-text text-darken-4\">" + wishes[i].name + "<i class=\"material-icons right\">close</i></span><p>" + wishes[i].message + "</p></div></div></div>";
+			result += "<div class=\"col s4 \"><div class=\"card z-depth-2\"><div class=\"card-image waves-effect waves-block waves-light\"><img id=\"" + wishlink + "\"class=\"activator\" src=\"\" height=\"200\" width=\"200\"></div><div class=\"card-content\"><span class=\"card-title activator grey-text text-darken-4\"><strong>" + wishes[i].name +"</strong></span></div><div class=\"card-reveal\"><span class=\"card-title grey-text text-darken-4\"><strong>" + wishes[i].name + "</strong><i class=\"material-icons right\">close</i></span><p>" + wishes[i].message + "</p></div></div></div>";
 		} else {
-			result += "<div class=\"col s4 \"><div class=\"messagecard card z-depth-3\"><div class=\"card-content\"><span class=\"card-title\">" + wishes[i].name + "</span></br></br><p>" + wishes[i].message + "</p></div></div></div>";
+			result += "<div class=\"col s4 \"><div class=\"messagecard card z-depth-2\"><div class=\"card-content\"><span class=\"card-title\"><strong>" + wishes[i].name + "</strong></span></br></br><p>" + wishes[i].message + "</p></div></div></div>";
 		}
 		if (i == wishes.length-1) {
 			result += "</div>"
@@ -143,14 +143,17 @@ function uploadFile() {
 		Materialize.toast('Content is Mandatory', 1000) // 4000 is the duration of the toast
 		return false;
 	} else {
-		$('#uploadbutton').hide(1000);
-		$('.modal-footer').append("<div class=\"progress\"><div class=\"indeterminate\"></div></div>");
+		
 		if ($('#inputfile')[0].files.length > 0) {
 			if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
   				Materialize.toast('The File APIs are not fully supported in this browser.',1000);
   				
+			} 
+			else if ($('#inputfile')[0].files[0].size > 1048576) {
+				Materialize.toast('Please upload file less than 1 MB',1000);
 			} else {
-				
+				$('#uploadbutton').hide(1000);
+				$('.modal-footer').append("<div class=\"progress\"><div class=\"indeterminate\"></div></div>");
 				var uploadedfilepath = "";
 				var file = $('#inputfile').get(0).files[0];
 				var reader = new FileReader();
