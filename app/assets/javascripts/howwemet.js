@@ -26,23 +26,13 @@ $(document).on('turbolinks:load',function(){
     	$.scrollify.enable();
 		$(window).scroll(function (event) {
 			if (sound_on) {
+				turnOnSound();
 				speakOut(responsiveVoice);
 			} else {
 				turnOffSound(responsiveVoice);
 			}	
 		});
 		$('#modal1').openModal();
-
-		$('.sound_on_option').click(function(){
-			sound_on = true;
-			turnOnSound();
-			speakOut(responsiveVoice);
-		});
-
-		$('.sound_off_option').click(function(){
-			sound_on = false;
-			turnOffSound(responsiveVoice);
-		});
 
 		$('#volume_up_button').click(function(){
 			sound_on = false;
