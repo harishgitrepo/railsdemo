@@ -11,7 +11,10 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( flipclock.js )
 Rails.application.config.assets.precompile += %w( flipclock.css )
+Rails.application.config.assets.precompile += %w( over500.css )
+Rails.application.config.assets.precompile += %w( animate.css )
 Rails.application.config.assets.precompile += %w( FileSaver.js )
 Rails.application.config.assets.precompile += %w( Blob.js )
 Rails.application.config.assets.precompile += %w( ics.js )
+Rails.application.config.assets.precompile += %w( jquery.scrollify.js )
 Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/

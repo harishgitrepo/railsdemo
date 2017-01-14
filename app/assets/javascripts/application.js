@@ -18,5 +18,16 @@
 //= require_tree .
 
 $(document).on('turbolinks:load',function(){
+
+	$('.cssload-main').delay(5000).fadeOut(); // will first fade out the loading animation 
+  $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website. 
+  $('body').delay(350).css({'overflow':'visible'});
 	$('.tooltipped').tooltip({delay: 50});
+
+
+
+
+	if(responsiveVoice.isPlaying()) {
+  			responsiveVoice.cancel();
+		}
 });

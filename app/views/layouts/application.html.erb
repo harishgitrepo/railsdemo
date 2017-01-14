@@ -3,6 +3,8 @@
   <head>
     <title>Wedding Ceremony</title>
     <meta name="turbolinks-cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
     <%= csrf_meta_tags %>
 
@@ -11,11 +13,22 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Tangerine">
+    <link rel="stylesheet" media="screen and (min-width: 500px)" href="assets/over500.css">
     
 
   </head>
 
   <body>
+  <div id="preloader">
+  <div class="cssload-main">
+  <div class="cssload-heart">
+    <span class="cssload-heartL"></span>
+    <span class="cssload-heartR"></span>
+    <span class="cssload-square"></span>
+  </div>
+  <div class="cssload-shadow"></div>
+</div>
+</div>
 
     <div id="#" class="header">
       
@@ -23,14 +36,22 @@
             <i class="material-icons">
 home</i>  
           <% end %>
-          <div class="mdl-layout-spacer"></div>
+          
+          
+                    <%= link_to howwemet_path, :id => "how_we_met", :class => "about_us_button  btn-floating btn-large waves-effect waves-light blue tooltipped", "data-position" =>  "bottom", "data-delay" => 50, "data-tooltip" => "How We Met" do %>
+            <i class="material-icons">
+wc</i>  
+          <%end%>
+
+          
+                    <%= link_to photos_path, :id => "photos", :class => "photo_button btn-floating btn-large waves-effect waves-light blue tooltipped", "data-position" =>  "bottom", "data-delay" => 50, "data-tooltip" => "Photos" do %>
+            <i class="material-icons">
+photo</i>  
+          <% end %>
           <%= link_to wishes_path, :id => "wishes", :class => "wishes_button btn-floating btn-large waves-effect waves-light blue tooltipped", "data-position" =>  "bottom", "data-delay" => 50, "data-tooltip" => "Wishes" do %>
             <i class="material-icons">
 cake</i>  
           <% end %>
-
-
-
     </div>    
     <%= yield %>
   </body>

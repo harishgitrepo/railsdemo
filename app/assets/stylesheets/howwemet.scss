@@ -1,0 +1,91 @@
+// Place all the styles related to the howwemet controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.section_page {
+	width : 100%;
+	
+	border : 2px solid transparent;
+}
+
+.pagination li {
+	
+}
+
+.pagination li a {
+	color: white !important;
+}
+
+
+.male_chat_box {
+	color : black;
+	background-color : white;
+	width : inherit;
+	max-width : 80vw;
+	
+}
+
+.sound_button {
+	bottom: 0%;
+	margin-left: 1vw;
+	margin-bottom: 1.5vw;
+	float: left;
+	position: fixed !important;
+	z-index: 998 !important;
+}
+
+.male_chat_box.card-panel {
+	padding : 0px;
+	margin : 0px;
+	margin-left : 6.5vw;
+
+}
+
+.female_chat_box {
+	color : black;
+	background-color : white;
+	width : inherit;
+	max-width : 80vw;
+	
+}
+
+.female_chat_box.card-panel { 
+	padding : 0px;
+	margin : 0px;
+}
+
+.avator {
+	max-width: 80px;
+	max-height: 80px;
+	width : 8vw;
+	height: 8vw;
+	border-radius: 40px;
+	
+}
+
+.float_action {
+	float:left;
+}
+
+.home {
+	
+}
+
+.chat_male {
+	margin-top : 10vw;
+	margin-left : 7vw;
+}
+
+.chat_female {
+	margin-top : 10vw;
+	margin-left: 20vw;
+}
+
+.content {
+	font-size : 2vw;
+}
+
+.ishu {
+	font-size : 1.5vw !important;
+}
+

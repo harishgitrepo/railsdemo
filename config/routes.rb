@@ -7,16 +7,20 @@ Rails.application.routes.draw do
 
   delete 'wishes/delete'
 
-  get 'wishes/index', :as => :wishes
+  match 'wishes' => 'wishes#index', :as => :wishes, :via => :get
 
   get 'wishes/query'
 
-  get 'photos/index', :as => :photos
+  match 'photos' => 'photos#index', :as => :photos, :via => :get
 
-	get 'welcome/index', :as => :welcome
+	match 'welcome' => 'welcome#index', :as => :welcome, :via => :get
 	root 'welcome#index'
 
 
 	get 'wishes/list'
+  
+
+
+  match 'howwemet' => 'howwemet#index', :as => :howwemet, :via => :get
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

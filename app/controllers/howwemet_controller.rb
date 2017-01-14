@@ -1,0 +1,2 @@
+class HowwemetController < ApplicationController
+end

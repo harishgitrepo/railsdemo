@@ -40,28 +40,27 @@ body {
 
  #map {
         width: 50%;
-        height: 270px;
+        height: 30vw;
      }
 
 		 .title_text {
-      margin-top : 150px;
-       margin-left : 100px;
-       font-size : 70px;
+      margin-top : 20vw;
+       margin-left : 10vw;
+       font-size : 5vw;
 		 }
 
 
      .mdl-card.clock-space {
-      height : 230px;
+      height : 5vw;
       width: 530px;
       background-color: white;
       z-index : 0;
      }
 
      .clock_card.clock {
-      margin-top: 30px;
-      height: 100px;
+      margin-top: 1vw;
+      height: 10vw;
      }
-
 
 
 
@@ -74,11 +73,10 @@ body {
   height : 250px;
 }
 .first-page {
-  width : 1280px;
-  height : 700px;
-  background-image: url("featured.jpeg");
-  background-size: 1280px 700px;
+  height: 50vw;
   color: white;
+  background-image: url("featured.jpeg");
+  background-size: cover;
 }
 .tangerine {
   font-family: Tangerine, serif;
@@ -96,18 +94,17 @@ body {
 }
 
 .wedding-date {
-  margin-left : 300px;
-  font-size : 70px;
+  margin-left : 25vw;
+  font-size : 5vw;
 }
 
-.first-page {
-  width : 1280px;
-  height : 700px;
-  background-color : black;
-}
 .second-page {
   
 
+}
+
+.clock-content {
+  padding : 0;
 }
 
 .clock {
@@ -137,10 +134,12 @@ body {
 
 .venue_details {
   width : 50%;
+  height : auto;
 }
 
 .clock_box.card.large {
   height : 220px;
+  width : 98vw;
   
 }
 .clock_row.row{
@@ -154,10 +153,26 @@ body {
   opacity : 1;
 }
 
+.welcome_footer {
+  height : inherit !important;
+}
+
+@media screen and (max-width: 678px) {
+  .clock_box.card.large {
+    height : 60vw;
+  
+  }
+}
 
 
-
-
+.inviation_image {
+  width: inherit;
+  height: 60vw;
+  padding: 2vw;
+  margin-left:auto;
+  margin-right:auto;
+  display: block;
+}
 
 
 
@@ -180,6 +195,4 @@ body {
     100% {top: 32px;}
   
 }
-
-
 

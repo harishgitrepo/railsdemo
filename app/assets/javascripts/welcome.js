@@ -35,8 +35,10 @@ function initMap() {
   });
 }
 
+
 var cal = "";
 $(document).on('turbolinks:load',function() {
+  
 	
     // ICS Code
     cal = ics();

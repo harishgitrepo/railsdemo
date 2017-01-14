@@ -10,7 +10,7 @@ $(document).on('turbolinks:load',function(){
 	});
 	$("#textarea1").emojioneArea();
 
-	if (window.location.pathname.includes("wishes/index")) {
+	if (window.location.pathname.includes("wishes")) {
 		loadWishContainer(1,false,"");	
 	}
 	
@@ -18,6 +18,8 @@ $(document).on('turbolinks:load',function(){
 	$('#search').on('input',function(){
 		reloadWishes(1,true,$(this).val());
 	});
+
+	
 });
 
 
@@ -42,6 +44,9 @@ function loadWishContainer(page,isquery,queryparam) {
    					wishescontainer.empty();
    					wishescontainer.append(result);
    					wishescontainer.show();
+   					$(".wishescard").hover(function(){
+		 				$(this).toggleClass("z-depth-4");
+					});
    						
    				},
    				error: function (e) {
@@ -61,7 +66,7 @@ function getCardsHtml(wishes,isquery) {
 	
 	if (wishes.length == 0) {
 		if (isquery) {
-			return "<h1>No Search Results !!</h1>"
+			return "<h1 style='color: white;'>No Search Results !!</h1>"
 		} else {
 			return "<h1>You are the first one to wish !! Click on Add Button.</h1>"
 		}
@@ -75,9 +80,9 @@ function getCardsHtml(wishes,isquery) {
 			wishlink = wishes[i]["link"];
 			requestForImage(wishlink);
 			wishlink = wishlink.slice(1,wishlink.length);
-			result += "<div class=\"col s4 \"><div class=\"card z-depth-2\"><div class=\"card-image waves-effect waves-block waves-light\"><img id=\"" + wishlink + "\"class=\"activator\" src=\"\" height=\"200\" width=\"200\"></div><div class=\"card-content\"><span class=\"card-title activator grey-text text-darken-4\"><strong>" + wishes[i].name +"</strong></span></div><div class=\"card-reveal\"><span class=\"card-title grey-text text-darken-4\"><strong>" + wishes[i].name + "</strong><i class=\"material-icons right\">close</i></span><p>" + wishes[i].message + "</p></div></div></div>";
+			result += "<div class=\"col s4 \"><div class=\"wishescard card \"><div class=\"card-image waves-effect waves-block waves-light\"><img id=\"" + wishlink + "\"class=\"activator\" src=\"\"></div><div class=\"card-reveal\"><span class=\"card-title grey-text text-darken-4\"><strong>" + wishes[i].name + "</strong><i class=\"material-icons right\">close</i></span><p>" + wishes[i].message + "</p></div></div></div>";
 		} else {
-			result += "<div class=\"col s4 \"><div class=\"messagecard card z-depth-2\"><div class=\"card-content\"><span class=\"card-title\"><strong>" + wishes[i].name + "</strong></span></br></br><p>" + wishes[i].message + "</p></div></div></div>";
+			result += "<div class=\"col s4 \"><div class=\"wishescard messagecard card \"><div class=\"card-content\"><span class=\"card-title\"><strong>" + wishes[i].name + "</strong></span></br></br><p>" + wishes[i].message + "</p></div></div></div>";
 		}
 		if (i == wishes.length-1) {
 			result += "</div>"
@@ -89,7 +94,7 @@ function getCardsHtml(wishes,isquery) {
 			counttothree = 0;
 		}
 	}
-	console.log(result);
+	
 	return result;
 }
 

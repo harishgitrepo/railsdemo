@@ -4,12 +4,12 @@
 
 
 .wishes-header {
-	height:200px ;
+	height:10vwpx ;
 	width: 70%;
 	background-color:white;
 	z-index : 1;
 	border-radius: 2px;
-	margin-left: 200px;
+	margin-left: 10vw;
 	margin-top : 70px;
 }
 
@@ -18,24 +18,24 @@
 }
 
 .wishes-container {
-	height: 400px;
-	width : 70%;
+	height: inherit;
+	width : 70vw;
 	background-color:transparent;
 	z-index : 1;
 	border-radius: 2px;
-	margin-left: 200px;
-	margin-top: 50px;
+	margin-left: 10vw;
+	margin-top: 100px;
 	
 	border-color : white;
 	
 }
-
+/*
 #post_button {
 	position:absolute;
-    top: 32.3%;
-    left: 83.4%;
+    top: calc(100% - 8vw);
+    left: calc(100% - 22vw);
 }
-
+*/
 
 
 
@@ -45,13 +45,153 @@
 	position : relative;
 }
 
+
+nav .input-field {
+	float: left;
+	width: calc(100% - 5vw);
+}
+
+
+@media screen and (max-width: 1110px) {
+	nav .input-field {
+		width: calc(100% - 6vw);		
+	}
+}
+
+
+
+@media screen and (max-width: 925px) {
+	nav .input-field {
+		width: calc(100% - 7vw);		
+	}
+}
+
+
+@media screen and (max-width: 795px) {
+	nav .input-field {
+		width: calc(100% - 8vw);		
+	}
+}
+
+
+
+@media screen and (max-width: 700px) {
+	nav .input-field {
+		width: calc(100% - 9vw);		
+	}
+}
+
+
+@media screen and (max-width: 625px) {
+	nav .input-field {
+		width: calc(100% - 10vw);		
+	}
+}
+
+
+@media screen and (max-width: 560px) {
+	nav .input-field {
+		width: calc(100% - 11vw);		
+	}
+}
+
+
+@media screen and (max-width: 500px) {
+	nav .input-field {
+		width: calc(100% - 12vw);		
+	}
+}
+
+@media screen and (max-width: 465px) {
+	nav .input-field {
+		width: calc(100% - 13vw);		
+	}
+}
+
+@media screen and (max-width: 428px) {
+	nav .input-field {
+		width: calc(100% - 14vw);		
+	}
+}
 .searchbox {
 	background-color : #d60c53;
 }
 
-.messagecard {
-	height : 290px;
+.wishescard {
+	height : 20vw;
+	width : 20vw;
+	
 }
 
 
+
+
+
+@media screen and (max-width: 700px) { 
+	.wishescard {
+		width : 30vw;
+		height : 30vw;
+
+	}
+
+	.wishescard.card .card-content p {
+		font-size : 3vw !important;
+	}	
+
+	.wishescard .card-content .card-title {
+		font-size : 4vw !important;
+	}
+
+
+
+	.wishes-container .row .col.s4 {
+		width: inherit;
+	}
+
+	
+
+}
+
+
+@media screen and (max-width: 420px) { 
+	.wishescard {
+		width : 60vw;
+		height : 60vw;
+
+	}
+
+	.wishes-container .row .col.s4 {
+		width: inherit;
+	}
+	.wishescard.card .card-content p {
+		font-size : 4vw !important;
+	}	
+
+	.wishescard .card-content .card-title {
+		font-size : 5vw !important;
+	}
+	
+	.wishescard.card .card-reveal p {
+		font-size : 4vw !important;
+	}	
+
+	.wishescard .card-reveal .card-title {
+		font-size : 10vw !important;
+	}
+}
+
+
+.wishescard .card-image {
+	height : 100%;
+	width : 100%;
+}
+
+.wishescard.card .card-content .card-title {
+	line-height : 2vw;
+	font-size: 2vw;
+}
+
+.wishescard.card .card-content p {
+	font-size: 1.5vw;
+}
 
